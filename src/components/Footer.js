@@ -46,8 +46,6 @@ const Footer = () => {
 };
 
 const FooterContainer = styled.div`
-  bottom: 0;
-  position: absolute;
   margin-top: auto;
   width: 100%;
   background-color: #f0f0f0;
