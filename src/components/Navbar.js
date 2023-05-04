@@ -90,7 +90,7 @@ const NavItems = styled.div`
   box-shadow: -4px 0px 7px 0px rgba(0, 0, 0, 0.25);
   padding: 10px;
   gap: 3rem;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 6.3rem;
   transition: display 10s ease-in;
