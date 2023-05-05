@@ -1,10 +1,50 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import BlogComp from "../components/BlogComp";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 
 const Home = () => {
+  const [index, setIndex] = useState(0);
+  const timeoutRef = useRef(null);
+  const delay = 2500;
+
+  function resetTimeout() {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }
+
+  useEffect(() => {
+    resetTimeout();
+    timeoutRef.current = setTimeout(
+      () =>
+        setIndex((prevIndex) =>
+          prevIndex === reviews.length - 1 ? 0 : prevIndex + 1
+        ),
+      delay
+    );
+
+    return () => {
+      resetTimeout();
+    };
+  }, [index]);
+
+  const reviews = [
+    {
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut l Lorem ipsum dolor sit amet, consect",
+      name: "John Doe",
+    },
+    {
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut l",
+      name: "Jessi Kar",
+    },
+    {
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut l",
+      name: "Tonny Han",
+    },
+  ];
+
   return (
     <>
       <Navbar />
@@ -112,7 +152,31 @@ const Home = () => {
         <Heading style={{ color: "#FFB449", marginLeft: "3rem" }}>
           Testimonials
         </Heading>
-        <Container></Container>
+        <Container>
+          <Slider style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}>
+            {reviews.map((review, index) => (
+              <Slide key={index}>
+                <Desc>{review.desc}</Desc>
+                <Name>{review.name}</Name>
+              </Slide>
+            ))}
+          </Slider>
+          <Dots>
+            {reviews.map((_, idx) => (
+              <Dot
+                style={{
+                  backgroundColor: index === idx ? "#fff" : "#c4c4c4",
+                  width: index === idx ? "15px" : "8px",
+                  height: index === idx ? "15px" : "8px",
+                }}
+                key={idx}
+                onClick={() => {
+                  setIndex(idx);
+                }}
+              ></Dot>
+            ))}
+          </Dots>
+        </Container>
       </Testimonials>
       <Blogs>
         <Header>
@@ -338,6 +402,54 @@ const Members = styled.div`
 const Container = styled.div`
   min-height: 380px;
   background: #1c1b1b;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+`;
+
+const Slider = styled.div`
+  white-space: nowrap;
+  transition: ease 1000ms;
+`;
+
+const Slide = styled.div`
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+
+const Dots = styled.div`
+  align-items: center;
+  justify-content: center;
+  display: flex;
+`;
+const Dot = styled.div`
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 0px 7px 0px;
+`;
+
+const Desc = styled.p`
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 46px;
+  text-align: center;
+  width: 80%;
+  white-space: break-spaces;
+  margin: 1rem auto;
+  color: #fff;
+`;
+const Name = styled.p`
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  margin: 1rem 0;
+  color: #fff;
 `;
 
 const Header = styled.div`
@@ -345,7 +457,6 @@ const Header = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-
 const BlogContainer = styled.div`
   display: flex;
   justify-content: space-between;
