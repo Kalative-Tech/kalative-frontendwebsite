@@ -50,7 +50,7 @@ const CarouselComp = () => {
     <Container>
       <Slider style={{ transform: `translate(-${activeIndex * 100}%)` }}>
         {content.map((c, index) => (
-          <Slide id={c.id}>
+          <Slide key={c.id}>
             <Flex>
               <div style={{ marginRight: 0 }}>
                 <Heading>{c.title}</Heading>

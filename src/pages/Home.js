@@ -3,12 +3,13 @@ import Navbar from "../components/Navbar";
 import BlogComp from "../components/BlogComp";
 import Footer from "../components/Footer";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [index, setIndex] = useState(0);
   const timeoutRef = useRef(null);
   const delay = 2500;
-
+  const navigate = useNavigate();
   function resetTimeout() {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
@@ -181,7 +182,7 @@ const Home = () => {
       <Blogs>
         <Header>
           <Heading style={{ color: "#FE5C36" }}>Blogs</Heading>
-          <Button>View All</Button>
+          <Button onClick={() => navigate("/blogs")}>View All</Button>
         </Header>
         <BlogContainer>
           <BlogComp />
@@ -192,7 +193,7 @@ const Home = () => {
       <NewsLetter>
         <Header>
           <Heading style={{ color: "#54AFBC" }}>NewsLetter</Heading>
-          <Button>View All</Button>
+          <Button onClick={() => navigate("/newsletters")}>View All</Button>
         </Header>
         <BlogContainer>
           <BlogComp />

@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Blogs = () => {
   const Blogdata = [
@@ -61,9 +62,10 @@ const Blogs = () => {
 };
 
 const Blog = ({ data, idx }) => {
+  const navigate = useNavigate();
   return (
     <Container>
-      <BlogImg src="images/BlogTemp.png" />
+      <BlogImg src="/images/BlogTemp.png" />
       <Title>{data.title}</Title>
       <Date>{data.date}</Date>
       <Body>{data.desc}</Body>
@@ -76,6 +78,7 @@ const Blog = ({ data, idx }) => {
               ? "#FF866A"
               : "#8DCCD6",
         }}
+        onClick={() => navigate("blog")}
       >
         Read Now
       </Button>

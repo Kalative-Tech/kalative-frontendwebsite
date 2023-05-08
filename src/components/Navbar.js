@@ -22,7 +22,7 @@ export default function Navbar() {
   return (
     <NavbarContainer>
       <NavImg>
-        <img src="images/kalative_logo.png" />
+        <img src="/images/kalative_logo.png" />
       </NavImg>
       <NavMenu onClick={() => setSidebarOpen(!sidebarOpen)}>
         <img src={MenuIcon} />
@@ -34,17 +34,59 @@ export default function Navbar() {
             width <= 1024 ? (sidebarOpen === true ? "flex" : "none") : "flex",
         }}
       >
-        <NavItem>Home</NavItem>
-        <NavItem>Why Us?</NavItem>
-        <NavItem>Projects</NavItem>
-        <NavItem>Blogs</NavItem>
-        <NavItem>NewsLetters</NavItem>
-        <NavItem>Team</NavItem>
+        <NavItem
+          to="/"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          Home
+        </NavItem>
+        <NavItem
+          className={({ isActive }) => (isActive ? "active" : "")}
+          to="/whyus"
+        >
+          Why Us?
+        </NavItem>
+        <NavItem
+          className={({ isActive }) => (isActive ? "active" : "")}
+          to={"/projects"}
+        >
+          Projects
+        </NavItem>
+        <NavItem
+          className={({ isActive }) => (isActive ? "active" : "")}
+          to={"/blogs"}
+        >
+          Blogs
+        </NavItem>
+        <NavItem
+          className={({ isActive }) => (isActive ? "active" : "")}
+          to="/newsletters"
+        >
+          NewsLetters
+        </NavItem>
+        <NavItem
+          className={({ isActive }) => (isActive ? "active" : "")}
+          to="/teams"
+        >
+          Team
+        </NavItem>
+        {/* for registrartion */}
         {/* <NavButton>Register</NavButton> */}
         {width <= 1024 ? (
           <>
-            <NavItem>Profile</NavItem>
-            <NavItem>Contact Us</NavItem>
+            <NavItem
+              className={({ isActive }) => (isActive ? "active" : "")}
+              to={"/profile"}
+            >
+              Profile
+            </NavItem>
+            <NavItem
+              className={({ isActive }) => (isActive ? "active" : "")}
+              to={"/contact"}
+            >
+              Contact Us
+            </NavItem>
+            {/* //Logout or Login */}
             <NavButton>Logout</NavButton>
           </>
         ) : (
@@ -98,7 +140,6 @@ const NavItems = styled.div`
   height: 80vh;
   min-width: 300px;
   overflow-y: scroll;
-
   box-shadow: -4px 0px 7px 0px rgba(0, 0, 0, 0.25);
   padding: 10px;
   gap: 3rem;
@@ -120,6 +161,7 @@ const NavItems = styled.div`
     width: auto;
     position: static;
     /* top: 0; */
+    cursor: pointer;
     box-shadow: none;
   }
 `;
@@ -129,6 +171,13 @@ const NavItem = styled(NavLink)`
   line-height: 27px;
   color: #000;
   text-decoration: none;
+
+  &.active {
+    border-block-end-color: #54afbc;
+    border-block-end-style: solid;
+    border-block-width: 5px;
+    border-radius: 4px;
+  }
 `;
 
 const NavButton = styled.button`

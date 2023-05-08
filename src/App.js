@@ -1,3 +1,4 @@
+import { Route, Routes } from "react-router-dom";
 import Blog from "./pages/Blog";
 import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
@@ -10,9 +11,17 @@ import Signup from "./pages/Signup";
 
 function App() {
   return (
-    <div>
-      <Projects />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/register" element={<Signup />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/projects" element={<Projects />} />
+      <Route path="/blogs" element={<Blogs />} />
+      <Route path="/blogs/blog" element={<Blog />} />
+      <Route path="/newsletters" element={<NewsLetters />} />
+      <Route path="/newsletters/newsletter" element={<NewsLetter />} />
+    </Routes>
   );
 }
 

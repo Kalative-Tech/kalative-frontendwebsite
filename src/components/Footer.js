@@ -9,7 +9,7 @@ const Footer = () => {
       <MainFooter>
         <FooterLeft>
           <AboutKala>
-            <img src="images/kalative_logo.png" />
+            <img src="/images/kalative_logo.png" />
             <p>
               We believe in achieving our customers' dreams and showing them
               that their dreams have become a reality. If you have one such,

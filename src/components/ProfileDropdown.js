@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Profile from "../icons/profile.svg";
 import Dropdownicon from "../icons/dropdown.svg";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const ProfileDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -19,11 +21,17 @@ const ProfileDropdown = () => {
         className={"animate__animated animate__fadeIn"}
         style={{ display: isOpen ? "flex" : "none" }}
       >
-        <Item>
-          <p>Profile</p>
+        <Item
+          className={({ isActive }) => (isActive ? "active" : "")}
+          to={"/profile"}
+        >
+          Profile
         </Item>
-        <Item>
-          <p>Contact Us</p>
+        <Item
+          className={({ isActive }) => (isActive ? "active" : "")}
+          to={"/contact"}
+        >
+          Contact Us
         </Item>
         <Button>Log Out</Button>
       </DropdownContainer>
@@ -51,9 +59,11 @@ const DropdownContainer = styled.div`
   margin-top: 1rem;
   flex-direction: column;
 `;
-const Item = styled.div`
+const Item = styled(NavLink)`
   font-weight: 500;
   font-size: 18px;
+  text-decoration: none;
+  color: #000000;
   line-height: 27px;
   border: 0;
   text-align: center;
@@ -62,6 +72,12 @@ const Item = styled.div`
 
   p {
     margin: 0;
+  }
+  &.active {
+    border-block-end-color: #54afbc;
+    border-block-end-style: solid;
+    border-block-width: 5px;
+    border-radius: 4px;
   }
 `;
 const Button = styled.button`

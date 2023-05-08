@@ -2,15 +2,17 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 const NewsLetter = () => {
   const bg = ["#FFC066", "#FF866A", "#8DCCD6"];
+  const navigate = useNavigate();
   return (
     <>
       <Navbar />
       <Container>
         <Heading>
-          <Span>Newsletters / </Span>
+          <Span onClick={() => navigate(-1)}>Newsletters / </Span>
           <Title> Title of the Newsletter</Title>
         </Heading>
         <Content>
@@ -20,13 +22,13 @@ const NewsLetter = () => {
             }}
           >
             <Header>
-              <Image src={"images/Author.png"} />
+              <Image src={"/images/Author.png"} />
               <Details>
                 <Author>Kalative</Author>
                 <Date>April 20, 2023</Date>
               </Details>
             </Header>
-            <BlogImage src="images/Blog-temp.png" />
+            <BlogImage src="/images/Blog-temp.png" />
           </Left>
           <Right>
             <Desc>
@@ -77,6 +79,7 @@ const Span = styled.span`
   margin-right: 0.4rem;
   font-size: 18px;
   font-weight: 500;
+  cursor: pointer;
   line-height: 27px;
   letter-spacing: 0em;
   text-align: left;

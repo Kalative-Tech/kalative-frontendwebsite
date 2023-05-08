@@ -2,42 +2,43 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const NewsLetters = () => {
   const Blogdata = [
     {
       id: 1,
-      title: "Blog Title",
+      title: "Newsletter Title",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
       date: "Feb 23, 2023",
     },
     {
       id: 2,
-      title: "Blog Title",
+      title: "Newsletter Title",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
       date: "Feb 23, 2023",
     },
     {
       id: 3,
-      title: "Blog Title",
+      title: "Newsletter Title",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
       date: "Feb 23, 2023",
     },
     {
       id: 4,
-      title: "Blog Title",
+      title: "Newsletter Title",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
       date: "Feb 23, 2023",
     },
     {
       id: 5,
-      title: "Blog Title",
+      title: "Newsletter Title",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
       date: "Feb 23, 2023",
     },
     {
       id: 6,
-      title: "Blog Title",
+      title: "Newsletter Title",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
       date: "Feb 23, 2023",
     },
@@ -61,6 +62,7 @@ const NewsLetters = () => {
 };
 
 const Blog = ({ data, idx }) => {
+  const navigate = useNavigate();
   return (
     <Container>
       <BlogImg src="images/BlogTemp.png" />
@@ -76,6 +78,7 @@ const Blog = ({ data, idx }) => {
               ? "#FF866A"
               : "#8DCCD6",
         }}
+        onClick={() => navigate("newsletter")}
       >
         Read Now
       </Button>
