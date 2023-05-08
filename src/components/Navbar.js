@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import MenuIcon from "../icons/menu.svg";
 import { useEffect, useState } from "react";
+import ProfileDropdown from "./ProfileDropdown";
 
 export default function Navbar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -39,7 +40,16 @@ export default function Navbar() {
         <NavItem>Blogs</NavItem>
         <NavItem>NewsLetters</NavItem>
         <NavItem>Team</NavItem>
-        <NavButton>Register</NavButton>
+        {/* <NavButton>Register</NavButton> */}
+        {width <= 1024 ? (
+          <>
+            <NavItem>Profile</NavItem>
+            <NavItem>Contact Us</NavItem>
+            <NavButton>Logout</NavButton>
+          </>
+        ) : (
+          <ProfileDropdown />
+        )}
       </NavItems>
     </NavbarContainer>
   );
@@ -85,16 +95,24 @@ const NavItems = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: #fff;
-  /* height: 96vh; */
+  height: 80vh;
   min-width: 300px;
+  overflow-y: scroll;
+
   box-shadow: -4px 0px 7px 0px rgba(0, 0, 0, 0.25);
   padding: 10px;
   gap: 3rem;
   position: fixed;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
   right: 0;
   top: 6.3rem;
   transition: display 10s ease-in;
   -webkit-transition: display 10s ease-in;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
   @media screen and (min-width: 1024px) {
     flex-direction: row;
