@@ -220,6 +220,10 @@ const Magazine = styled.div`
   margin: 5rem auto;
   background: #bdbdbd;
   border: 1px solid #000000;
+
+  @media screen and (max-width: 1050px) {
+    width: 70%;
+  }
 `;
 
 export default Projects;

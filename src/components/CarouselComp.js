@@ -85,7 +85,7 @@ const Container = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  width: 500px;
+  max-width: 500px;
   justify-content: space-evenly;
 `;
 
@@ -114,6 +114,11 @@ const Heading = styled.p`
   font-size: 24px;
   line-height: 36px;
   color: #000;
+  white-space: break-spaces;
+
+  @media screen and (max-width: 550px) {
+    /* width: 70%; */
+  }
 `;
 const Desc = styled.p`
   font-weight: 400;

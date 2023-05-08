@@ -387,12 +387,16 @@ const TeamMember = styled.div`
   background: #d3d3d3;
   width: 558px;
   height: 328px;
+
+  @media (max-width: 600px) {
+    width: 400px;
+  }
 `;
 
 const Members = styled.div`
   display: flex;
   justify-content: space-between;
-  @media (max-width: 850px) {
+  @media (max-width: 1260px) {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
