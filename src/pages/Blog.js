@@ -1,10 +1,23 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import Footer from "../components/Footer";
+import { blogData } from "./blogData";
 import { useNavigate } from "react-router-dom";
 
 const Blog = () => {
+  const renderContentWithLineBreaks = (content) => {
+    const lines = content.split("\n");
+    return lines.map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ));
+  };
+  const { id } = useParams();
+  const data = blogData.find((data) => data.id === parseInt(id));
   const bg = ["#FFC066", "#FF866A", "#8DCCD6"];
   const navigate = useNavigate();
   return (
@@ -13,7 +26,7 @@ const Blog = () => {
       <Container>
         <Heading>
           <Span onClick={() => navigate(-1)}>Blogs / </Span>
-          <Title> Title of the Blog</Title>
+          <Title>{data.title}</Title>
         </Heading>
         <Content>
           <Left
@@ -25,39 +38,13 @@ const Blog = () => {
               <Image src={"/images/Author.png"} />
               <Details>
                 <Author>Kalative</Author>
-                <Date>April 20, 2023</Date>
+                <Date>{data.date}</Date>
               </Details>
             </Header>
             <BlogImage src="/images/Blog-temp.png" />
           </Left>
           <Right>
-            <Desc>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-              <br />
-              <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-              <br />
-              <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Desc>
+            <Desc>{renderContentWithLineBreaks(data.content)}</Desc>
           </Right>
         </Content>
       </Container>
@@ -146,7 +133,7 @@ const Date = styled.p`
 `;
 
 const Desc = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 27px;
   letter-spacing: 0em;

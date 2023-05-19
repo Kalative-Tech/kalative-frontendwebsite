@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+//import { Link, animateScroll as scroll } from 'react-scroll';
 import styled from "styled-components";
 import MenuIcon from "../icons/menu.svg";
 import { useEffect, useState } from "react";
@@ -40,12 +41,12 @@ export default function Navbar() {
         >
           Home
         </NavItem>
-        <NavItem
+        {/* <NavItem
           className={({ isActive }) => (isActive ? "active" : "")}
-          to="/whyus"
+          to="/WhyUs"
         >
-          Why Us?
-        </NavItem>
+         Why us?
+        </NavItem> */}
         <NavItem
           className={({ isActive }) => (isActive ? "active" : "")}
           to={"/projects"}
@@ -64,12 +65,12 @@ export default function Navbar() {
         >
           NewsLetters
         </NavItem>
-        <NavItem
+        {/* <NavItem
           className={({ isActive }) => (isActive ? "active" : "")}
           to="/teams"
         >
           Team
-        </NavItem>
+        </NavItem> */}
         {/* for registrartion */}
         {/* <NavButton>Register</NavButton> */}
         {width <= 1024 ? (

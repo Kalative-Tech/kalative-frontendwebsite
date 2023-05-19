@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import BlogComp from "../components/BlogComp";
+import NewsLetterComp from "../components/NewsLetterComp";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
@@ -33,17 +34,25 @@ const Home = () => {
 
   const reviews = [
     {
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut l Lorem ipsum dolor sit amet, consect",
-      name: "John Doe",
+      desc: "'As a teacher, it’s so fulfilling to see such bold products to be introduced in education. The language is easy to follow, and reminds me of my schools days for keeping myself entertained.'",
+      name: "- Sheela Rani Simon, teacher",
     },
     {
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut l",
-      name: "Jessi Kar",
+      desc: "'Content provided in the Book Dristhikon is a game changer for Teenagers, I see great change & curiosity in my child after going through Dristhikon by Kalative'",
+      name: "- Vijay, Parent of Laasya, Student of class 8",
     },
     {
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut l",
-      name: "Tonny Han",
+      desc: "'Well crafted, good wholesome read for a 14-15 year old.'",
+      name: "- Bhawna Sharma, parent",
     },
+    {
+      desc: "'Unique magazine. Uncovers taboo topics. Relatable characters. Moral stories. Appeals to all ages. Captivating graphics. Highly recommended. Share the joy!'",
+      name: "- Aditya, 11th std student, Delhi",
+    },
+    {
+      desc:"'Seamless flow. Improved readability. Emotionally balanced. Concepts work well. Authenticity shines. Well done! Success awaits.'",
+      name:"- Psychologist"
+    }
   ];
 
   return (
@@ -53,10 +62,10 @@ const Home = () => {
         <Flex>
           <Left>
             <Text>We are here to change the philosophy of Student Culture</Text>
-            <Para>We Cut 🔵 Create 🟠 Curate</Para>
+            <Para>We Cut  <img src="/images/blue.svg"/> Create <img src="/images/yellow.svg"/> Curate</Para>
             <Button>Learn More</Button>
           </Left>
-          <Right>
+          <Right style={{}}>
             <img src="images/HeroImg.png" />
           </Right>
         </Flex>
@@ -78,6 +87,7 @@ const Home = () => {
           </Left>
         </Flex>
       </Hero>
+      <section id="WhyUs">
       <WhyUs>
         <Heading style={{ color: "#FFB449" }}>Why Us?</Heading>
         <FlexBox>
@@ -90,10 +100,10 @@ const Home = () => {
               necessary.
             </Subtext>
           </Box>
-          <BoxImg src="images/Moral.png" />
+          <BoxImg src="images/Moral.png" alt=""/>
         </FlexBox>
         <FlexBox>
-          <BoxImg src="images/Curious.png" />
+          <BoxImg src="images/Curious.png" alt="" />
           <Box style={{ background: "#FFC066" }}>
             <Subheading>To Build Curiosity</Subheading>
             <Subtext>
@@ -113,9 +123,10 @@ const Home = () => {
               them to hone their talents.
             </Subtext>
           </Box>
-          <BoxImg src="images/Imagination.png" />
+          <BoxImg src="images/Imagination.png" alt=""/>
         </FlexBox>
-      </WhyUs>
+      </WhyUs> 
+      </section>
       <KeyObj>
         <Heading style={{ color: "#FE5C36" }}>Key Objectives</Heading>
         <Objectives>
@@ -145,8 +156,8 @@ const Home = () => {
       <Team>
         <Heading style={{ color: "#54AFBC" }}>Our Team</Heading>
         <Members>
-          <TeamMember></TeamMember>
-          <TeamMember></TeamMember>
+          <TeamMember src="images/founder1.png" alt=" "></TeamMember>
+          <TeamMember src="images/founder2.png" alt=" "></TeamMember>
         </Members>
       </Team>
       <Testimonials>
@@ -186,8 +197,6 @@ const Home = () => {
         </Header>
         <BlogContainer>
           <BlogComp />
-          <BlogComp />
-          <BlogComp />
         </BlogContainer>
       </Blogs>
       <NewsLetter>
@@ -196,9 +205,7 @@ const Home = () => {
           <Button onClick={() => navigate("/newsletters")}>View All</Button>
         </Header>
         <BlogContainer>
-          <BlogComp />
-          <BlogComp />
-          <BlogComp />
+          <NewsLetterComp />
         </BlogContainer>
       </NewsLetter>
       <Footer />
@@ -259,8 +266,9 @@ const Left = styled.div`
     min-height: 500px;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 420px) {
     padding-left: 2rem;
+    min-height:340px;
   }
 `;
 const Right = styled.div`
@@ -291,8 +299,10 @@ const Text = styled.h3`
   line-height: 60px;
   color: #000000;
 
-  @media (max-width: 375px) {
-    width: 100%;
+  @media (max-width: 420px) {
+    width: 90%;
+    font-size:28px;
+    line-height:40px;
   }
 `;
 const Para = styled.p`
@@ -300,6 +310,11 @@ const Para = styled.p`
   font-size: 24px;
   line-height: 36px;
   color: #000000;
+  @media (max-width: 420px){
+    font-size:18px;
+    line-height:30px;
+    
+  }
 `;
 const Button = styled.button`
   background: #ffffff;
@@ -312,6 +327,10 @@ const Button = styled.button`
   /* margin: 1rem 0; */
   padding: 8px 14px;
   color: #1c1b1b;
+  @media (max-width: 420px){
+   margin-left:40px;
+   
+  }
 `;
 
 const Heading = styled.h1`
@@ -384,8 +403,8 @@ const Keytext = styled.p`
   width: 80%;
 `;
 
-const TeamMember = styled.div`
-  background: #d3d3d3;
+const TeamMember = styled.img`
+  border: 1px solid #000000;
   width: 558px;
   height: 328px;
 
@@ -431,6 +450,9 @@ const Dots = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
+  @media (max-width: 420px){
+    margin-bottom:1rem;
+   }
 `;
 const Dot = styled.div`
   display: inline-block;
@@ -448,6 +470,9 @@ const Desc = styled.p`
   white-space: break-spaces;
   margin: 1rem auto;
   color: #fff;
+  @media (max-width: 420px){
+   font-size:20px;
+  }
 `;
 const Name = styled.p`
   font-weight: 700;
@@ -455,6 +480,9 @@ const Name = styled.p`
   line-height: 36px;
   margin: 1rem 0;
   color: #fff;
+  @media (max-width: 420px){
+    font-size:18px;
+   }
 `;
 
 const Header = styled.div`

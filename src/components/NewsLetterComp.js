@@ -1,36 +1,35 @@
 import styled from "styled-components";
-import {blogData} from '../pages/blogData';
+import { jsonData } from "../pages/jsonData";
 import { useNavigate } from "react-router-dom";
-const BlogComp = () => {
+//import image2 from '../images/image2.jpeg';
+const NewsLetterComp = () => {
   const navigate = useNavigate();
-  const limitedData = blogData.slice(0, 3);
+  const limitedData = jsonData.slice(0, 3);
   const handleReadNow = (id) => {
     navigate(`/data/${id}`);
   };
   return (
     <>
-    {limitedData.map((data) => (
-    <Container key={data.id} onClick={() => handleReadNow(data.id)}>
-      <BlogImg src={data.image} />
-      <Title>{data.title}</Title>
-      <Date>{data.date}</Date>
-      <Body>
-        {data.desc}
-      </Body>
-    </Container>
-    ))}
+      {limitedData.map((data) => (
+        <Container key={data.id} onClick={() => handleReadNow(data.id)}>
+          <BlogImg src={data.image} />
+          <Title>{data.title}</Title>
+          <Date>{data.date}</Date>
+          <Body>{data.desc}</Body>
+        </Container>
+      ))}
     </>
   );
 };
 
 const Container = styled.div`
   width: 370px;
-  height: 420px;
-  cursor:pointer;
+  height: 399px;
+  cursor: pointer;
 `;
 const BlogImg = styled.img`
   width: 100%;
-  height:200px;
+  height: 250px;
   object-fit: contain;
 `;
 const Title = styled.p`
@@ -54,4 +53,4 @@ const Body = styled.p`
   margin: 0.5rem 0;
 `;
 
-export default BlogComp;
+export default NewsLetterComp;

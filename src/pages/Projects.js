@@ -73,7 +73,7 @@ const Projects = () => {
           </Carousel>
         </FlexBox>
       </Drishtikon>
-      <Magazine></Magazine>
+      <Magazine src="images/poster1.jpg"></Magazine>
       <Footer />
     </>
   );
@@ -214,15 +214,18 @@ const Para = styled.p`
   color: #1c1b1b;
 `;
 
-const Magazine = styled.div`
-  width: 965px;
-  height: 904px;
+const Magazine = styled.img`
+  width: 800px;
+  height: 800px;
   margin: 5rem auto;
-  background: #bdbdbd;
+  align-items:center;
+  text-align: center;
+  display: block;
+  justify-content: center;
   border: 1px solid #000000;
-
   @media screen and (max-width: 1050px) {
-    width: 70%;
+    width: 60%;
+    height:400px
   }
 `;
 

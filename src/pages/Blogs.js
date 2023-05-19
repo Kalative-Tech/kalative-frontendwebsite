@@ -2,56 +2,17 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import styled from "styled-components";
+import {blogData} from "./blogData";
 import { useNavigate } from "react-router-dom";
 
-const Blogs = () => {
-  const Blogdata = [
-    {
-      id: 1,
-      title: "Blog Title",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
-      date: "Feb 23, 2023",
-    },
-    {
-      id: 2,
-      title: "Blog Title",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
-      date: "Feb 23, 2023",
-    },
-    {
-      id: 3,
-      title: "Blog Title",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
-      date: "Feb 23, 2023",
-    },
-    {
-      id: 4,
-      title: "Blog Title",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
-      date: "Feb 23, 2023",
-    },
-    {
-      id: 5,
-      title: "Blog Title",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
-      date: "Feb 23, 2023",
-    },
-    {
-      id: 6,
-      title: "Blog Title",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
-      date: "Feb 23, 2023",
-    },
-  ];
-
+const Blogs = () => { 
   return (
     <>
       <Navbar />
-
       <BlogsContainer>
         <Heading>Blogs</Heading>
         <BlogGrid>
-          {Blogdata.map((blog, index) => (
+          {blogData.map((blog, index) => (
             <Blog data={blog} key={blog.id} idx={index} />
           ))}
         </BlogGrid>
@@ -63,9 +24,12 @@ const Blogs = () => {
 
 const Blog = ({ data, idx }) => {
   const navigate = useNavigate();
+  const handleReadNow = (id) => {
+    navigate(`/data/${id}`);
+  };
   return (
     <Container>
-      <BlogImg src="/images/BlogTemp.png" />
+      <BlogImg src={data.image} />
       <Title>{data.title}</Title>
       <Date>{data.date}</Date>
       <Body>{data.desc}</Body>
@@ -78,7 +42,7 @@ const Blog = ({ data, idx }) => {
               ? "#FF866A"
               : "#8DCCD6",
         }}
-        onClick={() => navigate("blog")}
+        onClick={() => handleReadNow(data.id)}
       >
         Read Now
       </Button>
@@ -117,6 +81,7 @@ const Container = styled.div`
 `;
 const BlogImg = styled.img`
   width: 100%;
+  height: 250px;
   object-fit: cover;
 `;
 const Title = styled.p`

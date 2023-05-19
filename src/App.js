@@ -18,9 +18,9 @@ function App() {
       <Route path="/profile" element={<Profile />} />
       <Route path="/projects" element={<Projects />} />
       <Route path="/blogs" element={<Blogs />} />
-      <Route path="/blogs/blog" element={<Blog />} />
+      <Route path="/data/:id" element={<Blog />} />
       <Route path="/newsletters" element={<NewsLetters />} />
-      <Route path="/newsletters/newsletter" element={<NewsLetter />} />
+      <Route path="/news/:id" element={<NewsLetter />} />
     </Routes>
   );
 }

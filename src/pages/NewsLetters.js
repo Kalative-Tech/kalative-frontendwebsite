@@ -3,47 +3,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-
+import { jsonData } from "./jsonData";
 const NewsLetters = () => {
-  const Blogdata = [
-    {
-      id: 1,
-      title: "Newsletter Title",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
-      date: "Feb 23, 2023",
-    },
-    {
-      id: 2,
-      title: "Newsletter Title",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
-      date: "Feb 23, 2023",
-    },
-    {
-      id: 3,
-      title: "Newsletter Title",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
-      date: "Feb 23, 2023",
-    },
-    {
-      id: 4,
-      title: "Newsletter Title",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
-      date: "Feb 23, 2023",
-    },
-    {
-      id: 5,
-      title: "Newsletter Title",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
-      date: "Feb 23, 2023",
-    },
-    {
-      id: 6,
-      title: "Newsletter Title",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dolorsit amet",
-      date: "Feb 23, 2023",
-    },
-  ];
-
   return (
     <>
       <Navbar />
@@ -51,8 +12,8 @@ const NewsLetters = () => {
       <BlogsContainer>
         <Heading>Newsletters</Heading>
         <BlogGrid>
-          {Blogdata.map((blog, index) => (
-            <Blog data={blog} key={blog.id} idx={index} />
+          {jsonData.map((blog, index) => (
+            <Blog news={blog} key={blog.id} idx={index} />
           ))}
         </BlogGrid>
       </BlogsContainer>
@@ -61,14 +22,18 @@ const NewsLetters = () => {
   );
 };
 
-const Blog = ({ data, idx }) => {
+const Blog = ({ news, idx }) => {
   const navigate = useNavigate();
+  const handleReadNow = (id) => {
+    navigate(`/news/${id}`);
+  };
+
   return (
     <Container>
-      <BlogImg src="images/BlogTemp.png" />
-      <Title>{data.title}</Title>
-      <Date>{data.date}</Date>
-      <Body>{data.desc}</Body>
+      <BlogImg src={news.image} />
+      <Title>{news.title}</Title>
+      <Date>{news.date}</Date>
+      <Body>{news.desc}</Body>
       <Button
         style={{
           backgroundColor:
@@ -78,7 +43,8 @@ const Blog = ({ data, idx }) => {
               ? "#FF866A"
               : "#8DCCD6",
         }}
-        onClick={() => navigate("newsletter")}
+        onClick={() => handleReadNow(news.id)}
+        // to={`/data/${data.id}`}
       >
         Read Now
       </Button>
@@ -117,6 +83,7 @@ const Container = styled.div`
 `;
 const BlogImg = styled.img`
   width: 100%;
+  height:250px;
   object-fit: cover;
 `;
 const Title = styled.p`

@@ -1,66 +1,54 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import Footer from "../components/Footer";
+import { jsonData } from "./jsonData";
 import { useNavigate } from "react-router-dom";
 
 const NewsLetter = () => {
+  const renderContentWithLineBreaks = (content) => {
+    const lines = content.split('\n');
+    return lines.map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ));
+  };
+  const { id } = useParams();
+  const news = jsonData.find((news) => news.id === parseInt(id));
+  //console.log(data.content);
   const bg = ["#FFC066", "#FF866A", "#8DCCD6"];
   const navigate = useNavigate();
   return (
     <>
       <Navbar />
-      <Container>
-        <Heading>
-          <Span onClick={() => navigate(-1)}>Newsletters / </Span>
-          <Title> Title of the Newsletter</Title>
-        </Heading>
-        <Content>
-          <Left
-            style={{
-              backgroundColor: bg[Math.floor(Math.random() * bg.length)],
-            }}
-          >
-            <Header>
-              <Image src={"/images/Author.png"} />
-              <Details>
-                <Author>Kalative</Author>
-                <Date>April 20, 2023</Date>
-              </Details>
-            </Header>
-            <BlogImage src="/images/Blog-temp.png" />
-          </Left>
-          <Right>
-            <Desc>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-              <br />
-              <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-              <br />
-              <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Desc>
-          </Right>
-        </Content>
-      </Container>
+            <Container>
+              <Heading>
+                <Span onClick={() => navigate(-1)}>Newsletters / </Span>
+                <Title>{news.title}</Title>
+              </Heading>
+              <Content>
+                <Left
+                  style={{
+                    backgroundColor: bg[Math.floor(Math.random() * bg.length)],
+                  }}
+                >
+                  <Header>
+                    <Image src={"/images/Author.png"} />
+                    <Details>
+                      <Author>Kalative</Author>
+                      <Date>{news.date}</Date>
+                    </Details>
+                  </Header>
+                  <BlogImage src="/images/Blog-temp.png" />
+                </Left>
+                <Right>
+                  <Desc>{renderContentWithLineBreaks(news.content)}</Desc>
+                </Right>
+              </Content>
+            </Container>
       <Footer />
     </>
   );
@@ -146,7 +134,7 @@ const Date = styled.p`
 `;
 
 const Desc = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 27px;
   letter-spacing: 0em;
