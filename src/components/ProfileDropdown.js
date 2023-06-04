@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Profile from "../icons/profile.svg";
 import Dropdownicon from "../icons/dropdown.svg";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const ProfileDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
