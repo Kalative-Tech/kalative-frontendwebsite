@@ -6,8 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 const ProfileDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
-
+ 
   return (
     <Container>
       <Flex onClick={() => setIsOpen(!isOpen)}>

@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 //import { Link, animateScroll as scroll } from 'react-scroll';
 import styled from "styled-components";
 import MenuIcon from "../icons/menu.svg";
@@ -23,10 +23,10 @@ export default function Navbar() {
   return (
     <NavbarContainer>
       <NavImg>
-        <img src="/images/kalative_logo.png" />
+        <img alt="Logo" src="/images/kalative_logo.png" />
       </NavImg>
       <NavMenu onClick={() => setSidebarOpen(!sidebarOpen)}>
-        <img src={MenuIcon} />
+        <img alt="Logo" src={MenuIcon} />
       </NavMenu>
       <NavItems
         className={"animate__animated animate__fadeIn"}
