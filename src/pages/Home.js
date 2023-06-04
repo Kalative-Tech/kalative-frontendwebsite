@@ -64,7 +64,7 @@ const Home = () => {
         <Flex>
           <Left>
             <Text>We are here to change the philosophy of Student Culture</Text>
-            <Para>We Cut  <img alt="Logo" src="/images/blue.svg"/> Create <img src="/images/yellow.svg"/> Curate</Para>
+            <Para>We Cut  <img alt="Logo" src="/images/blue.svg"/> Create <img alt="Logo" src="/images/yellow.svg"/> Curate</Para>
             <Button>Learn More</Button>
           </Left>
           <Right style={{}}>
