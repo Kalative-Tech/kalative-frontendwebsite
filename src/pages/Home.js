@@ -31,7 +31,7 @@ const Home = () => {
     return () => {
       resetTimeout();
     };
-  }, [reviews.lenght, index]);
+  }, [reviews.length, index]);
 
   const reviews = [
     {
@@ -124,7 +124,7 @@ const Home = () => {
               them to hone their talents.
             </Subtext>
           </Box>
-          <BoxImg  src="images/Imagination.png" />
+          <BoxImg alt="Logo"  src="images/Imagination.png" />
         </FlexBox>
       </WhyUs> 
       </section>
