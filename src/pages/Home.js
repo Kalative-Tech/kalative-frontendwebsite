@@ -31,7 +31,8 @@ const Home = () => {
     return () => {
       resetTimeout();
     };
-  }, [reviews.length, index]);
+    // eslint-disable-next-line
+  }, [index]);
 
   const reviews = [
     {
