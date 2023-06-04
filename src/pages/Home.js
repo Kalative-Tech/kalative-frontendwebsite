@@ -25,12 +25,13 @@ const Home = () => {
           prevIndex === reviews.length - 1 ? 0 : prevIndex + 1
         ),
       delay
+      
     );
 
     return () => {
       resetTimeout();
     };
-  }, [index]);
+  }, [reviews.lenght, index]);
 
   const reviews = [
     {
@@ -62,16 +63,16 @@ const Home = () => {
         <Flex>
           <Left>
             <Text>We are here to change the philosophy of Student Culture</Text>
-            <Para>We Cut  <img src="/images/blue.svg"/> Create <img src="/images/yellow.svg"/> Curate</Para>
+            <Para>We Cut  <img alt="Logo" src="/images/blue.svg"/> Create <img src="/images/yellow.svg"/> Curate</Para>
             <Button>Learn More</Button>
           </Left>
           <Right style={{}}>
-            <img src="images/HeroImg.png" />
+            <img alt="Logo" src="images/HeroImg.png" />
           </Right>
         </Flex>
         <Flex>
           <Right>
-            <img src="images/HeroImg1.png" />
+            <img alt="Logo" src="images/HeroImg1.png" />
           </Right>
           <Left
             style={{
@@ -100,10 +101,10 @@ const Home = () => {
               necessary.
             </Subtext>
           </Box>
-          <BoxImg src="images/Moral.png" alt=""/>
+          <BoxImg  src="images/Moral.png" alt=""/>
         </FlexBox>
         <FlexBox>
-          <BoxImg src="images/Curious.png" alt="" />
+          <BoxImg  src="images/Curious.png" alt="" />
           <Box style={{ background: "#FFC066" }}>
             <Subheading>To Build Curiosity</Subheading>
             <Subtext>
@@ -123,7 +124,7 @@ const Home = () => {
               them to hone their talents.
             </Subtext>
           </Box>
-          <BoxImg src="images/Imagination.png" alt=""/>
+          <BoxImg  src="images/Imagination.png" />
         </FlexBox>
       </WhyUs> 
       </section>
